@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Hello World</title>
+</head>
+<body>
+  <table>
+    <thead>
+      <th>编号</th>
+      <th>姓名</th>
+    </thead>
+    <tbody th:each="list : ${list}">
+      <td th:text="${list.id}"></td>
+      <td th:text="${list.name}"></td>
+    </tbody>
+  </table>
+</body>
+</html>
