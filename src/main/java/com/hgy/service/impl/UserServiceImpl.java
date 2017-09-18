@@ -1,6 +1,9 @@
 package com.hgy.service.impl;
 
+import com.hgy.mapper.UserMapper;
+import com.hgy.model.User;
 import com.hgy.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,19 +15,26 @@ import java.util.Map;
  * Created by huguoyu on 2017/9/15.
  */
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Override
-    public List<Map<String, Object>> userList() {
-        List<Map<String,Object>> list = new ArrayList<>();
-        for(int i = 0;i<20;i++){
-            Map<String,Object> map = new HashMap<>();
-            map.put("id",i);
-            map.put("name","周五"+i);
-            list.add(map);
-        }
-        return list;
+    public List<User> userList(User user) {
+
+        return userMapper.queryUserList(user);
+    }
+
+    @Override
+    public int userListCount(User user) {
+        return userMapper.queryUserListCount(user);
+    }
+
+    @Override
+    public Integer saveUser(User user) {
+        return userMapper.insert(user);
     }
 }
 

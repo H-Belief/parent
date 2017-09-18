@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgy.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.hgy.model.User">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2017-09-18 10:19:59.
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="birthday" jdbcType="BIGINT" property="birthday" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="isDelete" jdbcType="INTEGER" property="isdelete" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="idNumber" jdbcType="VARCHAR" property="idnumber" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2017-09-18 10:19:59.
+    -->
+    id, username, birthday, sex, isDelete, telephone, address, idNumber
+  </sql>
+
+  <select id="queryUserList" parameterType="com.hgy.model.User" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List" />
+    FROM user WHERE  1 = 1
+    <if test="user.username != null">
+      AND username = #{user.username,jdbcType=VARCHAR},
+    </if>
+    <if test="user.birthday != null">
+      AND birthday = #{user.birthday,jdbcType=BIGINT},
+    </if>
+    <if test="user.sex != null">
+      AND sex = #{user.sex,jdbcType=INTEGER},
+    </if>
+    <if test="user.isdelete != null">
+      AND isDelete = #{user.isdelete,jdbcType=INTEGER},
+    </if>
+    <if test="user.telephone != null">
+      AND telephone = #{user.telephone,jdbcType=VARCHAR},
+    </if>
+    <if test="user.address != null">
+      AND address = #{user.address,jdbcType=VARCHAR},
+    </if>
+    <if test="user.idnumber != null">
+      AND idNumber = #{user.idnumber,jdbcType=VARCHAR},
+    </if>
+  </select>
+
+  <select id="queryUserListCount" parameterType="com.hgy.model.User" resultType="java.lang.Integer">
+    SELECT count(*)
+    FROM user WHERE  1 = 1
+    <if test="user.username != null">
+      AND username = #{user.username,jdbcType=VARCHAR},
+    </if>
+    <if test="user.birthday != null">
+      AND birthday = #{user.birthday,jdbcType=BIGINT},
+    </if>
+    <if test="user.sex != null">
+      AND sex = #{user.sex,jdbcType=INTEGER},
+    </if>
+    <if test="user.isdelete != null">
+      AND isDelete = #{user.isdelete,jdbcType=INTEGER},
+    </if>
+    <if test="user.telephone != null">
+      AND telephone = #{user.telephone,jdbcType=VARCHAR},
+    </if>
+    <if test="user.address != null">
+      AND address = #{user.address,jdbcType=VARCHAR},
+    </if>
+    <if test="user.idnumber != null">
+      AND idNumber = #{user.idnumber,jdbcType=VARCHAR},
+    </if>
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2017-09-18 10:19:59.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2017-09-18 10:19:59.
+    -->
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hgy.model.User" useGeneratedKeys="true" keyProperty="id">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2017-09-18 10:19:59.
+    -->
+    insert into user (id, username, birthday, 
+      sex, isDelete, telephone, 
+      address, idNumber)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{birthday,jdbcType=BIGINT}, 
+      #{sex,jdbcType=INTEGER}, #{isdelete,jdbcType=INTEGER}, #{telephone,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{idnumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hgy.model.User">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2017-09-18 10:19:59.
+    -->
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="isdelete != null">
+        isDelete,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="idnumber != null">
+        idNumber,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=BIGINT},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="idnumber != null">
+        #{idnumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hgy.model.User">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2017-09-18 10:19:59.
+    -->
+    update user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=BIGINT},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        isDelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="idnumber != null">
+        idNumber = #{idnumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hgy.model.User">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2017-09-18 10:19:59.
+    -->
+    update user
+    set username = #{username,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=BIGINT},
+      sex = #{sex,jdbcType=INTEGER},
+      isDelete = #{isdelete,jdbcType=INTEGER},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      idNumber = #{idnumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
