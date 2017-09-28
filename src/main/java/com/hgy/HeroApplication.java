@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @MapperScan("com.hgy.mapper")
 public class HeroApplication {
 
-	@RequestMapping(value = "index")
+	@RequestMapping(value = "login")
 	public String index(Model model){
 
 		model.addAttribute("a","一天天心情很是美丽");
 
-		return "index";
+		return "login";
 	}
 
 
